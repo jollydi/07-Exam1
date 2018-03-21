@@ -2,8 +2,8 @@
 Exam 1, problem 2.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  March 2018.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Isaiah Jolly.  March 2018.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -119,6 +119,38 @@ def problem2(line1, line2, thickness, win):
     #          Tests have been written for you (above).
     #   See the IMPORTANT NOTE just above the DEF line above.
     # -------------------------------------------------------------------------
+
+    line1.attach_to(win)
+    line2.attach_to(win)
+    win.render()
+
+    if line1.start.x > line1.end.x:
+        mid1_x = line1.end.x + ((line1.start.x - line1.end.x) / 2)
+    else:
+        mid1_x = line1.start.x + ((line1.end.x - line1.start.x) / 2)
+
+    if line1.start.y > line1.end.y:
+        mid1_y = line1.end.y + ((line1.start.y - line1.end.y) / 2)
+    else:
+        mid1_y = line1.start.y + ((line1.end.y - line1.start.y) / 2)
+
+    if line2.start.x > line2.end.x:
+        mid2_x = line2.end.x + ((line2.start.x - line2.end.x) / 2)
+    else:
+        mid2_x = line2.start.x + ((line2.end.x - line2.start.x) / 2)
+
+    if line2.start.y > line2.end.y:
+        mid2_y = line2.end.y + ((line2.start.y - line2.end.y) / 2)
+    else:
+        mid2_y = line2.start.y + ((line2.end.y - line2.start.y) / 2)
+
+    mid1 = rg.Point(mid1_x, mid1_y)
+    mid2 = rg.Point(mid2_x, mid2_y)
+    rectangle = rg.Rectangle(mid1, mid2)
+    rectangle.outline_thickness = thickness
+    rectangle.outline_color = line1.color
+    rectangle.attach_to(win)
+    win.render()
 
 
 # -----------------------------------------------------------------------------
